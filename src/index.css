@@ -4,6 +4,7 @@
 }
 
 body {
+  background-color: rgb(234, 237, 237); /* Grey background-makes containers appear */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

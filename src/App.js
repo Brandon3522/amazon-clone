@@ -1,16 +1,19 @@
 import './App.css';
+import Header from './Header';
+import Home from './Home';
+import { Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className="app">
-      <h1>Hello from React!</h1>
+      {/* Header */}
+      <Header></Header>
+      {/* Home */}
+      <Home></Home>
+
+
     </div>
-    // Header
-    
-
-
-
-    // Home
+   
   );
 }
 
