@@ -8,10 +8,12 @@ function App() {
   return (
     <Router>
       <div className="app">
+      <Header></Header>
         <Routes>
-          <Route path='/checkout' element={<><Header></Header><Checkout></Checkout></>}>
+          <Route path='/checkout' element={<Checkout></Checkout>}>
           </Route>
-          <Route path='/' element={<><Header></Header><Home></Home></>}>
+          {/* Default Route must be last? */}
+          <Route path='/' element={<Home></Home>}>
           </Route>
         </Routes>
       </div>
