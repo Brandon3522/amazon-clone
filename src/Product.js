@@ -1,10 +1,11 @@
-import React from "react";
-import "./Product.css";
-import { useStateValue } from "./StateProvider";
+import React from 'react';
+import './Product.css';
+import { useStateValue } from './StateProvider';
 
-function Product({id, title, image, price, rating }) {
-    const [ { basket }, dispatch ] = useStateValue();
-    console.log('basket', basket)
+function Product({ id, title, image, price, rating }) {
+    const [{ basket }, dispatch] = useStateValue();
+    // console.log('basket', basket)
+    // console.log(rating)
 
     const addToBasket = () => {
         // dispatch an item to data layer
@@ -16,11 +17,9 @@ function Product({id, title, image, price, rating }) {
                 image: image,
                 price: price,
                 rating: rating,
-            }
-        })
-
-    }
-
+            },
+        });
+    };
 
     return (
         <div className="product">
@@ -33,6 +32,7 @@ function Product({id, title, image, price, rating }) {
 
                 <div className="product_rating">
                     {/* Displays stars dependent on rating value */}
+                    {/* _ = dont care about value, i = index */}
                     {Array(rating)
                         .fill()
                         .map((_, i) => (
@@ -41,13 +41,11 @@ function Product({id, title, image, price, rating }) {
                 </div>
             </div>
 
-            <img
-                className="product_image"
-                src={image}
-                alt="product"
-            ></img>
+            <img className="product_image" src={image} alt="product"></img>
 
-            <button className="product_button" onClick={addToBasket}>Add to Basket</button>
+            <button className="product_button" onClick={addToBasket}>
+                Add to Basket
+            </button>
         </div>
     );
 }
