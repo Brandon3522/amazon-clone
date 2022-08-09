@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Login.css'
 import { useState } from 'react';
+import { auth } from './firebase';
 
 function Login() {
     const [email, setEmail] = useState(''); // '' = default value is empty
@@ -18,7 +19,13 @@ function Login() {
         e.preventDefault()
 
         // firebase registration
-
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                // successfull new user with email and password
+                console.log(auth)
+            })
+            .catch(error => alert(error.message))
     }
 
     return (
