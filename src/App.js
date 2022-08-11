@@ -4,8 +4,38 @@ import Home from './Home';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Checkout from './Checkout';
 import Login from './Login';
+import { useEffect } from 'react';
+import { auth } from './firebase';
+import { useStateValue } from './StateProvider';
 
 function App() {
+  const [ { }, dispatch ] = useStateValue();
+
+  // Keep track of current user with firebase auth
+  useEffect(() => {
+    // runs once when the app loads if [] is empty, otherwise runs when object in list changes
+    // 
+    auth.onAuthStateChanged(authUser => {
+      console.log('User:', authUser)
+
+      if (authUser) {
+        // user just logged in or user was logged in
+
+        // sends user info to data layer
+        dispatch({
+          type: 'SET_USER',
+          user: authUser,
+        })
+      } else {
+        // user logged out
+        dispatch({
+          type: 'SET_USER',
+          user: null,
+        })
+      }
+    })
+  }, [])
+
   return (
     <Router>
       <div className="app">

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 import { useState } from 'react';
 import { auth } from './firebase';
+import userEvent from '@testing-library/user-event';
 
 function Login() {
+    // navigate used to change URL
+    const navigate = useNavigate();  // navigate('/path')
     const [email, setEmail] = useState(''); // '' = default value is empty
     const [password, setPassword] = useState('');
 
@@ -12,7 +15,12 @@ function Login() {
         e.preventDefault() // prevent page from refreshing
 
         // firebase login
-
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                navigate('/')
+            })
+            .catch(error => alert(error.message))
     }
 
     const register = e => {
@@ -23,7 +31,11 @@ function Login() {
             .createUserWithEmailAndPassword(email, password)
             .then((auth) => {
                 // successfull new user with email and password
-                console.log(auth)
+                // console.log(auth)
+                // navigate to home page if true
+                if (auth) {
+                    navigate('/')
+                }
             })
             .catch(error => alert(error.message))
     }
