@@ -7,9 +7,10 @@ import Login from './Login';
 import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
+import Payment from './Payment';
 
 function App() {
-  const [ { }, dispatch ] = useStateValue();
+  const [ {}, dispatch ] = useStateValue();
 
   // Keep track of current user with firebase auth
   useEffect(() => {
@@ -41,8 +42,8 @@ function App() {
       <div className="app">
         <Routes>
           <Route path='/login' element={<Login></Login>}></Route>
-          <Route path='/checkout' element={<><Header></Header><Checkout></Checkout></>}>
-          </Route>
+          <Route path='/checkout' element={<><Header></Header><Checkout></Checkout></>}></Route>
+					<Route path='/payment' element={<><Header></Header><Payment></Payment></>}></Route>
           {/* Default Route must be last? */}
           <Route path='/' element={<><Header></Header><Home></Home></>}>
           </Route>
