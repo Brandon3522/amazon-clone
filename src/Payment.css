@@ -31,6 +31,11 @@
 	margin-left: 40px;
 }
 
+.payment_details {
+	flex: .8;
+	margin-left: 40px;
+}
+
 .payment_items {
 	margin-left: 10px;
 }

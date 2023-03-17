@@ -8,6 +8,15 @@ import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 import Payment from './Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js'; 
+import Orders from './Orders';
+
+// Run npm install only in Functions folder / Backend
+
+const promise = loadStripe(
+	'pk_test_51Mmio6B6L0lGaXM9gqCrQaNTypmNIyhnKRP66mUXc3FHfUGmXNMz1ayrxIfMI7Qhb1bkXHa1U0YMFH8dNoZTCH4S00PaMQrrgM'
+);
 
 function App() {
   const [ {}, dispatch ] = useStateValue();
@@ -43,7 +52,10 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/checkout' element={<><Header></Header><Checkout></Checkout></>}></Route>
-					<Route path='/payment' element={<><Header></Header><Payment></Payment></>}></Route>
+					<Route path='/payment' element={<><Header></Header>
+						<Elements stripe={promise}><Payment></Payment></Elements></>}>	
+					</Route>
+					<Route path='/orders' element={<><Header></Header><Orders></Orders></>}></Route>
           {/* Default Route must be last? */}
           <Route path='/' element={<><Header></Header><Home></Home></>}>
           </Route>
