@@ -45,7 +45,7 @@ function Payment() {
 				{/* Payment method */}
 				<div className='payment_section'>
 					<div className='payment_title'>
-						<h3>Delivery Address</h3>
+						<h3>Payment Details</h3>
 					</div>
 					<div className='payment_details'>
 							{/* Stripe functionality */}

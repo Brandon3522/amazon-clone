@@ -27,6 +27,10 @@
 	
 }
 
-.payment_address, .payment_items {
+.payment_address {
 	margin-left: 40px;
+}
+
+.payment_items {
+	margin-left: 10px;
 }
