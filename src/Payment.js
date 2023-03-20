@@ -8,9 +8,10 @@ import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from './reducer';
 import axios from './axios.js';
 import { useNavigate } from 'react-router-dom';
+import { db } from './firebase';
 
 function Payment() {
-  const [{ basket, user }] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
 
   // Stripe state
@@ -28,7 +29,7 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: 'POST',
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`, // Pass basket total to stripe
+        url: `/payments/create?total=${getBasketTotal(basket).toFixed(2) * 100}`, // Pass basket total to stripe
       });
       setClientSecret(response.data.clientSecret);
     };
@@ -51,9 +52,31 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         // Payment intent = payment confirmation
+
+				db.collection('users')
+					.doc(user?.uid)
+					.collection('orders')
+					.doc(paymentIntent.id)
+					.set({
+						basket: basket,
+						amount: paymentIntent.amount,
+						created: paymentIntent.created // Timestamp
+					})
+					.then(() => {
+						console.log('Orders created successfully in db')
+					})
+					.catch((error) => {
+						console.error('Error creating orders in db')
+					})
+
         setSuccess(true);
         setError(null);
         setProcessing(false);
+
+				// Empty basket
+				dispatch({
+					type: 'EMPTY_BASKET'
+				});
 
         navigate('/orders');
       });
