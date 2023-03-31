@@ -22,7 +22,7 @@ function Home() {
           ></Product>
           <Product
             id="51215023"
-            title="It Ends with Us: A Novel(1)"
+            title="It Ends with Us: A Novel"
             price={10.26}
             image="https://images-na.ssl-images-amazon.com/images/I/71j0FLAauxL._AC_UL450_SR450,320_.jpg"
             rating={5}

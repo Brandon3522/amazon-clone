@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable quotes */
 const functions = require('firebase-functions');
 
 // // Create and Deploy Your First Cloud Functions
@@ -13,7 +15,8 @@ const cors = require('cors');
 
 // Secret API key
 const stripe = require('stripe')(
-  'sk_test_51Mmio6B6L0lGaXM9ViPUuXB9X9ajrfrGLaTUQroLtSjnQJiNA3VIpJrYhVo6fq8Mtcq9jkO60REFPrYnHDxuv7W000DwVOPbSw'
+    // eslint-disable-next-line max-len
+    'sk_test_51Mmio6B6L0lGaXM9ViPUuXB9X9ajrfrGLaTUQroLtSjnQJiNA3VIpJrYhVo6fq8Mtcq9jkO60REFPrYnHDxuv7W000DwVOPbSw'
 );
 
 // Express API setup
@@ -21,7 +24,7 @@ const stripe = require('stripe')(
 const app = express();
 
 // Middlewares
-app.use(cors({ origin: true }));
+app.use(cors({origin: true}));
 app.use(express.json());
 
 // API routes
