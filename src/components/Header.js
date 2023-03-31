@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import { auth } from '../firebase';
 
-// import SearchIcon from '@mui/icons-material/Search';
-
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
 
@@ -37,7 +35,9 @@ function Header() {
         {/* !user && '/login' = if there is no user then push to login page */}
         <Link to={!user && '/login'} style={{ textDecoration: 'none' }}>
           <div onClick={handleAuthentication} className="header_option">
-            <span className="header_optionLine1">Hello {user?.email}</span>
+            <span className="header_optionLine1">
+              Hello {user ? user.email : 'Guest'}
+            </span>
             {/* user = true => sign out */}
             <span className="header_optionLine2">
               {user ? 'Sign Out' : 'Sign In'}
@@ -45,7 +45,7 @@ function Header() {
           </div>
         </Link>
 
-        <Link to="/orders">
+        <Link to="/orders" style={{ textDecoration: 'none' }}>
           <div className="header_option">
             <span className="header_optionLine1">Returns</span>
 
@@ -59,7 +59,7 @@ function Header() {
           <span className="header_optionLine2">Prime</span>
         </div>
 
-        <Link to="/checkout">
+        <Link to="/checkout" style={{ textDecoration: 'none' }}>
           <div className="header_optionBasket">
             <ShoppingBasketIcon></ShoppingBasketIcon>
 

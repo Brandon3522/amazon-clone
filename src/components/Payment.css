@@ -1,57 +1,54 @@
-
-
 .payment {
-	background-color: white;
+  background-color: white;
 }
 
 .payment_container > h1 {
-	text-align: center;
-	padding: 10px;
-	font-weight: 400;
-	background-color: rgb(234, 237, 237);
-	border-bottom: 1px solid lightgray;
+  text-align: center;
+  padding: 10px;
+  font-weight: 400;
+  background-color: rgb(234, 237, 237);
+  border-bottom: 1px solid lightgray;
 }
 
 .payment_container > h1 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .payment_section {
-	display: flex;
-	padding: 20px;
-	margin: 0 20px;
-	border-bottom: 1px solid lightgray;
+  display: flex;
+  padding: 20px;
+  margin: 0 20px;
+  border-bottom: 1px solid lightgray;
 }
 
 .payment_title {
-	
 }
 
 .payment_details > form {
-	max-width: 400px;
+  max-width: 400px;
 }
 
 .payment_details > form > div > button {
-	background: #f0c14b;
-	border: 1px solid;
-	margin-top: 10px;
-	border-color: #a88734 #9c7e31 #846a29;
-	color: #111;
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
 }
 
 .payment_details > h4 {
-	padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .payment_address {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 
 .payment_details {
-	flex: .8;
-	margin-left: 40px;
+  flex: 0.8;
+  margin-left: 40px;
 }
 
 .payment_items {
-	margin-left: 10px;
+  margin-left: 10px;
 }

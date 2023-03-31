@@ -1,6 +1,4 @@
-
-
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -12,34 +10,36 @@ const functions = require("firebase-functions");
 
 const express = require('express');
 const cors = require('cors');
+
 // Secret API key
-const stripe = require('stripe')
-('sk_test_51Mmio6B6L0lGaXM9ViPUuXB9X9ajrfrGLaTUQroLtSjnQJiNA3VIpJrYhVo6fq8Mtcq9jkO60REFPrYnHDxuv7W000DwVOPbSw');
+const stripe = require('stripe')(
+  'sk_test_51Mmio6B6L0lGaXM9ViPUuXB9X9ajrfrGLaTUQroLtSjnQJiNA3VIpJrYhVo6fq8Mtcq9jkO60REFPrYnHDxuv7W000DwVOPbSw'
+);
 
 // Express API setup
 // App config
 const app = express();
 
 // Middlewares
-app.use(cors({origin: true}));
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 // API routes
 app.get('/', (request, response) => response.status(200).send('Hello'));
 
 app.post('/payments/create', async (request, response) => {
-	const total = request.query.total;
-	console.log(`Payment request ${total}`);
+  const total = request.query.total;
+  console.log(`Payment request ${total}`);
 
-	const paymentIntent = await stripe.paymentIntents.create({
-		amount: total, // Subunits of currency
-		currency: 'usd',
-	})
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: total, // Subunits of currency
+    currency: 'usd',
+  });
 
-	response.status(201).send({
-		clientSecret: paymentIntent.client_secret,
-	}) // Ok - created
-})
+  response.status(201).send({
+    clientSecret: paymentIntent.client_secret,
+  }); // Ok - created
+});
 
 // Listen command
 exports.api = functions.https.onRequest(app);
