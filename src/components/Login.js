@@ -4,6 +4,7 @@ import './Login.css';
 import { useState } from 'react';
 import { auth } from '../firebase';
 import userEvent from '@testing-library/user-event';
+import logo from '../images/Amazon_logo_black_text.png'
 
 function Login() {
   // navigate used to change URL
@@ -45,7 +46,7 @@ function Login() {
       <Link to="/" style={{ textDecoration: 'none' }}>
         <img
           className="login_logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png"
+          src={logo}
           alt="amazon_logo"
         />
       </Link>

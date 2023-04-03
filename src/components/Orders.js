@@ -27,6 +27,14 @@ function Orders() {
     }
   }, []);
 
+	if (!orders) {
+		return (
+			<>
+				<h1>No orders placed</h1>
+			</>
+		)
+	}
+
   return (
     <div className="orders">
       <h1>Your Orders</h1>

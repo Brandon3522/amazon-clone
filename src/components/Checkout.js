@@ -15,8 +15,9 @@ function Checkout() {
           <h2 className="checkout_title">Your shopping basket</h2>
 
           {/* for every item in basket return CheckoutProduct*/}
-          {basket.map((item) => (
+          {basket.map((item, idx) => (
             <CheckoutProduct
+							key={idx}
               id={item.id}
               title={item.title}
               image={item.image}
