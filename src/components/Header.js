@@ -5,6 +5,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import { auth } from '../firebase';
+import amazonLogo from '../images/amazon_logo.png'
 
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -21,7 +22,7 @@ function Header() {
       <Link to="/">
         <img
           className="header_logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src={amazonLogo}
           alt="Amazon"
         ></img>
       </Link>
