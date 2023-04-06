@@ -14,7 +14,7 @@ import Orders from './components/Orders';
 
 // Stripe public API key
 const promise = loadStripe(
-  'pk_test_51Mmio6B6L0lGaXM9gqCrQaNTypmNIyhnKRP66mUXc3FHfUGmXNMz1ayrxIfMI7Qhb1bkXHa1U0YMFH8dNoZTCH4S00PaMQrrgM'
+  process.env.REACT_APP_STRIPE_PUBLIC_API_KEY
 );
 
 function App() {
@@ -24,8 +24,6 @@ function App() {
   useEffect(() => {
     // runs once when the app loads if [] is empty, otherwise runs when object in list changes
     auth.onAuthStateChanged((authUser) => {
-      console.log('User:', authUser);
-
       if (authUser) {
         // user just logged in or user was logged in
         // send user info to data layer
