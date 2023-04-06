@@ -16,7 +16,7 @@ const cors = require('cors');
 // Secret API key
 const stripe = require('stripe')(
     // eslint-disable-next-line max-len
-    'sk_test_51Mmio6B6L0lGaXM9ViPUuXB9X9ajrfrGLaTUQroLtSjnQJiNA3VIpJrYhVo6fq8Mtcq9jkO60REFPrYnHDxuv7W000DwVOPbSw'
+    process.env.REACT_APP_STRIPE_API_KEY
 );
 
 // Express API setup
@@ -31,17 +31,20 @@ app.use(express.json());
 app.get('/', (request, response) => response.status(200).send('Hello'));
 
 app.post('/payments/create', async (request, response) => {
-  const total = request.query.total;
-  console.log(`Payment request ${total}`);
-
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: total, // Subunits of currency
-    currency: 'usd',
-  });
-
-  response.status(201).send({
-    clientSecret: paymentIntent.client_secret,
-  }); // Ok - created
+  try {
+    const total = request.query.total;
+    console.log(`Payment request ${total}`);
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: total, // Subunits of currency
+      currency: 'usd',
+    });
+    response.status(201).send({
+      clientSecret: paymentIntent.client_secret,
+    }); // Ok - created
+  } catch (error) {
+    response.status(400).end();
+    console.error(`Error in post request: ${error}`);
+  }
 });
 
 // Listen command

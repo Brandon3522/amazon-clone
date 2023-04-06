@@ -12,8 +12,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Orders from './components/Orders';
 
-// Run npm install only in Functions folder / Backend
-
+// Stripe public API key
 const promise = loadStripe(
   'pk_test_51Mmio6B6L0lGaXM9gqCrQaNTypmNIyhnKRP66mUXc3FHfUGmXNMz1ayrxIfMI7Qhb1bkXHa1U0YMFH8dNoZTCH4S00PaMQrrgM'
 );
