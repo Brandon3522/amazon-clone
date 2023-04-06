@@ -2,8 +2,30 @@ import React from 'react';
 import './Home.css';
 import Product from './Product';
 import homeBanner from '../images/home_banner.jpg'
+import { getAll } from '../axios';
+import { useState, useEffect } from 'react';
 
 function Home() {
+	const [products, setProducts] = useState();
+
+	// Retrieve all products
+	useEffect(() => {
+		getAll()
+		.then(response => {
+			setProducts(response)
+		})
+		.catch(error => {
+			console.log(`Error retrieving products: ${error}`);
+		})
+	}, [])
+
+	// Change to loading bar
+	if (!products) {
+		return (
+			null
+		)
+	}
+
   return (
     <div className="home">
       <div className="home_container">
@@ -12,57 +34,124 @@ function Home() {
           src={homeBanner}
           alt="banner"
         ></img>
+				{/* ALternating Rows: Implement better way to vary # of items per row */}
+				<div className='home_row'>
+				{products.slice(0, 2).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={2}
+					></Product>
+				))}
+				</div>
 
-        <div className="home_row">
-          <Product
-            id="51215022"
-            title="The lean startup"
-            price={29.99}
-            image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1629999184i/10127019._UY630_SR1200,630_.jpg"
-            rating={3}
-          ></Product>
-          <Product
-            id="51215023"
-            title="It Ends with Us: A Novel"
-            price={10.26}
-            image="https://images-na.ssl-images-amazon.com/images/I/71j0FLAauxL._AC_UL450_SR450,320_.jpg"
-            rating={5}
-          ></Product>
-        </div>
+				<div className='home_row'>
+				{products.slice(2, 5).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={4}
+					></Product>
+				))}
+				</div>
 
-        <div className="home_row">
-          <Product
-            id="51215024"
-            title="Mighty Patch Original from Hero Cosmetics"
-            price={12.99}
-            image="https://images-na.ssl-images-amazon.com/images/I/615258clL6L._AC_UL450_SR450,320_.jpg"
-            rating={5}
-          ></Product>
-          <Product
-            id="51215025"
-            title="Brian's Hunt (A Hatchet Adventure)"
-            price={9.19}
-            image="https://images-na.ssl-images-amazon.com/images/I/A1aY1vXmBpL._AC_UL160_SR160,160_.jpg"
-            rating={4}
-          ></Product>
-          <Product
-            id="51215026"
-            title="Five Star Loose Leaf Paper, 3 Pack, 3 Hole Punched, Reinforced Filler Paper, Wide Ruled Paper"
-            price={19.69}
-            image="https://m.media-amazon.com/images/I/41o7mvF9m9L.jpg"
-            rating={3}
-          ></Product>
-        </div>
+				<div className='home_row'>
+				{products.slice(6, 7).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={3}
+					></Product>
+				))}
+				</div>
 
-        <div className="home_row">
-          <Product
-            id="51215027"
-            title="Sharpie 27145 Pocket Highlighters, Chisel Tip, Assorted Colors, 12-Count"
-            price={5.49}
-            image="https://m.media-amazon.com/images/I/51CoMNC6MDL.jpg"
-            rating={3}
-          ></Product>
-        </div>
+				<div className='home_row'>
+				{products.slice(7, 10).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={4}
+					></Product>
+				))}
+				</div>
+
+				<div className='home_row'>
+				{products.slice(10, 12).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={5}
+					></Product>
+				))}
+				</div>
+
+
+				<div className='home_row'>
+				{products.slice(12, 15).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={2}
+					></Product>
+				))}
+				</div>
+
+				<div className='home_row'>
+				{products.slice(15, 16).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={4}
+					></Product>
+				))}
+				</div>
+
+				<div className='home_row'>
+				{products.slice(16, 19).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={3}
+					></Product>
+				))}
+				</div>
+
+				<div className='home_row'>
+				{products.slice(19, 20).map((product, index) => (
+					<Product
+						key={product.id}
+						id={product.id}
+						title={product.title}
+						price={product.price}
+						image={product.image}
+						rating={5}
+					></Product>
+				))}
+				</div>
       </div>
     </div>
   );

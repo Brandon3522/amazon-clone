@@ -37,9 +37,11 @@ function Payment() {
     };
 
     getClientSecret();
-  }, [basket]);
+		console.log(getBasketTotal(basket))
+		
+  }, []);
 
-  console.log(`Secret: ${clientSecret}`);
+  
 
   // Stripe functionality
   const handleSubmit = async (e) => {
