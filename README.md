@@ -16,3 +16,4 @@ I utilized a range of tools and technologies, including:
 This personal Amazon clone project is a showcase of my skills in building complex web applications using React.
 
 ## Images
+![Home Page](/images/home.png "Home Page")
