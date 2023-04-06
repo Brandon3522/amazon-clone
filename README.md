@@ -16,7 +16,7 @@ I utilized a range of tools and technologies, including:
 This personal Amazon clone project is a showcase of my skills in building complex web applications using React.
 
 ## Images
-###Home Page
+### Home Page
 
 ![home](https://user-images.githubusercontent.com/77870751/230510434-b1d9e8a9-a496-4c68-aac3-81b51ff7eed2.PNG)
 
