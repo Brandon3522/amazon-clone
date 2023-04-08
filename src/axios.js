@@ -3,8 +3,13 @@ import axios from 'axios';
 const productsBaseURL = 'https://fakestoreapi.com'
 
 // Local server
+// const instance = axios.create({
+//   baseURL: 'http://localhost:5001/clone-f4a00/us-central1/api', // API URL - cloud function
+// });
+
+// Online server
 const instance = axios.create({
-  baseURL: 'http://localhost:5001/clone-f4a00/us-central1/api', // API URL - cloud function
+  baseURL: 'https://us-central1-clone-f4a00.cloudfunctions.net/api', // API URL - cloud function
 });
 
 // Get all products

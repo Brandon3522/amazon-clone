@@ -48,7 +48,7 @@ function Payment() {
     e.preventDefault();
     setProcessing(true); // Prevent button click while processing
 
-    const payload = await stripe
+    await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
