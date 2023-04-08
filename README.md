@@ -1,7 +1,7 @@
 # Amazon Clone
 
-## Live URL:
-[https://clone-f4a00.web.app](https://clone-f4a00.web.app "Amazon Clone")
+## Live URL: [https://clone-f4a00.web.app](https://clone-f4a00.web.app "Amazon Clone")
+
 
 ## Description
 Welcome to my personal Amazon clone project, built using React! The goal of this project was to create a fully functional e-commerce website that mimics Amazon's layout and functionality.
