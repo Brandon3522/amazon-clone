@@ -8,8 +8,9 @@ Users can browse through a range of products, add items to their shopping cart, 
 I utilized a range of tools and technologies, including:
 * React.js
 * Redux
+* Express.js
 * React Router
-* Firebase Cloud Firestore Database and Authentication
+* Firebase Cloud Firestore Database, Cloud Functions, and Authentication
 * Stripe API
 * Fake Store API
 
