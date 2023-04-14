@@ -39,6 +39,7 @@
   height: 30px;
   background-color: white;
   width: 98%;
+	border-radius: 5px;
 }
 
 .login_container > p {

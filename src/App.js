@@ -11,6 +11,7 @@ import Payment from './components/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Orders from './components/Orders';
+import SignUp from './components/SignUp';
 
 // Stripe public API key
 const promise = loadStripe(
@@ -46,6 +47,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/login" element={<Login></Login>}></Route>
+					<Route path="/SignUp" element={<SignUp></SignUp>}></Route>
           <Route
             path="/checkout"
             element={

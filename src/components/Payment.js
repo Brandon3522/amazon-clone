@@ -82,6 +82,8 @@ function Payment() {
           type: 'EMPTY_BASKET',
         });
 
+				alert('Order Successful')
+
         navigate('/orders');
       });
   };

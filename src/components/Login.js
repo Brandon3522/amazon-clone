@@ -24,23 +24,6 @@ function Login() {
       .catch((error) => alert(error.message));
   };
 
-  const register = (e) => {
-    e.preventDefault();
-
-    // firebase registration
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        // successfull new user with email and password
-        // console.log(auth)
-        // navigate to home page if true
-        if (auth) {
-          navigate('/');
-        }
-      })
-      .catch((error) => alert(error.message));
-  };
-
   return (
     <div className="login">
       <Link to="/" style={{ textDecoration: 'none' }}>
@@ -79,7 +62,7 @@ function Login() {
           Sale. Please review our privacy policy.
         </p>
 
-        <button onClick={register} className="login_registerButton">
+        <button onClick={() => navigate('/SignUp')} className="login_registerButton">
           Create Account
         </button>
       </div>
