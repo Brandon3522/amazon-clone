@@ -15,7 +15,7 @@ function Checkout() {
           <h2 className="checkout_title">Your shopping basket</h2>
 
           {/* for every item in basket return CheckoutProduct*/}
-          {basket.map((item, idx) => (
+          {basket.length > 0 ? (basket.map((item, idx) => (
             <CheckoutProduct
 							key={idx}
               id={item.id}
@@ -24,7 +24,7 @@ function Checkout() {
               price={item.price}
               rating={item.rating}
             ></CheckoutProduct>
-          ))}
+          ))) : (<h2 className='no-items-header'>Empty Cart</h2>) }
 
           {/* CheckoutProduct */}
         </div>
